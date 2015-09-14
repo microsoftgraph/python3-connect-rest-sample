@@ -6,6 +6,9 @@ import json
 import requests
 from connect.config import client_id, client_secret
 
+# The URL of the home page of the app. Leave as default if running on localhost:8000.
+home_page_url = 'http://127.0.0.1:8000/'
+
 # The OAuth authority.
 authority = 'https://login.microsoftonline.com'
 
@@ -28,6 +31,13 @@ def get_signin_url(redirect_uri):
 
   signin_url = authorize_url.format(urlencode(params))
   return signin_url
+  
+def get_signout_url(redirect_uri):
+  params = { 'post_logout_redirect_uri': home_page_url
+           }
+           
+  signout_url = (authority + '/common/oauth2/logout?{0}').format(urlencode(params))
+  return signout_url
   
 # This function passes the authorization code to the token
 # issuing endpoint, gets the token, and then returns it.

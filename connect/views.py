@@ -3,7 +3,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from connect.auth_helper import get_signin_url, get_token_from_code, get_user_info_from_token
+from connect.auth_helper import get_signin_url, get_token_from_code, get_user_info_from_token, get_signout_url
 from connect.graph_service import call_sendMail_endpoint
 
 # This is the home route. It renders a page with a button
@@ -11,6 +11,7 @@ from connect.graph_service import call_sendMail_endpoint
 def home(request):
   redirect_uri = request.build_absolute_uri(reverse('connect:get_token'))
   sign_in_url = get_signin_url(redirect_uri)
+  request.session['logoutUrl'] = get_signout_url(redirect_uri)
   context = { 
     'sign_in_url': sign_in_url 
   }
@@ -49,7 +50,8 @@ def main(request):
     'name': request.session['name'],
     'emailAddress': request.session['emailAddress'],
     'showSuccess': request.session['showSuccess'],
-    'showError': request.session['showError']
+    'showError': request.session['showError'],
+    'logoutUrl': request.session['logoutUrl']
   }
   return render(request, 'connect/main.html', context)
   
