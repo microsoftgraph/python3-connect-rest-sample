@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>O365 Connect sample</title>
+
+  <!-- Third party dependencies. -->
+  <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.css">
+  <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.css">
+
+  <style>
+    .navbar-header {
+      box-sizing: border-box;
+      display: block;
+      height: 40px;
+      line-height: 40px;
+      font-family: 'Segoe UI Semilight WestEuropean', 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+      font-size: 17px;
+      padding-left: 20px;
+      position: relative;
+      font-weight: bold;
+    }
+    
+    @media (min-width: 480px) {
+      .navbar-header {
+        float: left;
+        margin-right: 20px;
+        font-size: 20px;
+        padding: 0;
+      }
+    }
+  </style>
+
+</head>
+
+<body class="ms-Grid">
+  <div class="ms-Grid-row">
+    <!-- App navigation bar markup. -->
+    <div class="ms-NavBar">
+      <ul class="ms-NavBar-items">
+        <li class="navbar-header">Office 365 Connect sample</li>
+      </ul>
+    </div>
+
+    <!-- App main content markup. -->
+    <div class="ms-Grid-col ms-u-mdPush1 ms-u-md9 ms-u-lgPush1 ms-u-lg6">
+      <div>
+        <p class="ms-font-xl">Use the button below to connect to Office 365.</p>
+        <button class="ms-Button" onclick="window.location.href='{{ sign_in_url }}'">
+          <span class="ms-Button-label">Connect to Office 365</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
