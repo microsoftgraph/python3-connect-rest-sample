@@ -29,7 +29,7 @@ def get_token(request):
 
   # Save the token and other information for the view in the session.
   request.session['access_token'] = access_token
-  request.session['name'] = user_info['given_name']
+  request.session['alias'] = user_info['upn'].split('@')[0]
   request.session['emailAddress'] = user_info['upn']  
   request.session['showSuccess'] = 'false'
   request.session['showError'] = 'false'
@@ -47,7 +47,7 @@ def main(request):
     request.session['showError'] = 'false' 
   
   context = {
-    'name': request.session['name'],
+    'alias': request.session['alias'],
     'emailAddress': request.session['emailAddress'],
     'showSuccess': request.session['showSuccess'],
     'showError': request.session['showError'],
@@ -61,7 +61,7 @@ def send_mail(request):
   # Change the stored email address to whatever the user put in the form.
   request.session['emailAddress'] = request.GET.get('emailAddress')
   
-  response = call_sendMail_endpoint(request.session['access_token'], request.session['name'], request.session['emailAddress'])
+  response = call_sendMail_endpoint(request.session['access_token'], request.session['alias'], request.session['emailAddress'])
   
   # The success code for /me/sendMail is 202. Check to make sure
   # that the operation completed successfully. 
@@ -81,7 +81,7 @@ def send_mail(request):
 # the session and redirect to the home page. 
 def disconnect(request):
   request.session['access_token'] = None
-  request.session['name'] = None
+  request.session['alias'] = None
   request.session['emailAddress'] = None
   return HttpResponseRedirect(reverse('connect:home'))
   
