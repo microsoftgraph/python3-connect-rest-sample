@@ -18,7 +18,7 @@ def home(request):
   return render(request, 'connect/connect.html', context)
 
 # This is the route that is the redirect URI of your registered
-# Azuzre application. An authorization code is returned here that
+# Azure application. An authorization code is returned here that
 # is swapped for an access token in auth_helper.
 def get_token(request):
   auth_code = request.GET['code']
