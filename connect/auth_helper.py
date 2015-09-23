@@ -49,7 +49,9 @@ def get_token_from_code(auth_code, redirect_uri):
                 'client_secret': client_secret,
                 'resource': 'https://graph.microsoft.com'
               }
+              
   r = requests.post(token_url, data = post_data)
+  
   try:
     return r.json()
   except:
