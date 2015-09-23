@@ -25,8 +25,7 @@ def get_signin_url(redirect_uri):
   # Build the query parameters for the signin URL.
   params = { 'client_id': client_id,
              'redirect_uri': redirect_uri,
-             'response_type': 'code',
-             'resource': 'https://graph.microsoft.com'
+             'response_type': 'code'
            }
 
   signin_url = authorize_url.format(urlencode(params))
