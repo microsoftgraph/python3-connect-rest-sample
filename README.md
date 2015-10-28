@@ -22,8 +22,8 @@ To use the Office 365 Python Connect sample, you need the following:
 ## Configure and run the app
 
 1. Using your favorite IDE, open **config.py** in the *connect* directory.
-2. Replace *{your_app_client_ID}* with the client ID of your registered Azure application.
-3. Replace *{your_app_secret}* with a key generated on the **Configure** page of your app in the Microsoft Azure Management Portal.
+2. Replace *ENTER_YOUR_CLIENT_ID* with the client ID of your registered Azure application.
+3. Replace *ENTER_YOUR_SECRET* with a key generated on the **Configure** page of your app in the Microsoft Azure Management Portal.
 4. Install the [Requests: HTTP for Humans module](http://docs.python-requests.org/en/latest/) from the command line by running ```pip install requests```.
 5. Set up the server by running ```python manage.py migrate```. [This command](https://docs.djangoproject.com/en/1.8/ref/django-admin/#django-admin-migrate) will synchronize the database state with the current set of migrations.
 6. Start the development server by running ```python manage.py runserver```.
