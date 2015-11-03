@@ -6,7 +6,7 @@ import json
 from connect.data import get_email_text
 
 # The base URL for the Microsoft Graph API.
-graph_api_endpoint = 'https://graph.microsoft.com/beta{0}'
+graph_api_endpoint = 'https://graph.microsoft.com/v1.0{0}'
 		
 def call_sendMail_endpoint(access_token, alias, emailAddress):
 	# The resource URL for the sendMail action.
