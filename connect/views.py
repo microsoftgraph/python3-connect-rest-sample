@@ -56,7 +56,7 @@ def main(request):
   return render(request, 'connect/main.html', context)
   
 # This is the route that is called from the main.html template
-# to send an email with the unified API.
+# to send an email with the Microsoft Graph API.
 def send_mail(request):
   # Change the stored email address to whatever the user put in the form.
   request.session['emailAddress'] = request.GET.get('emailAddress')
@@ -87,7 +87,7 @@ def disconnect(request):
   
 #######################################################################
 #  
-# O365-Python-Unified-API-Connect, https://github.com/OfficeDev/O365-Python-Unified-API-Connect
+# O365-Python-Microsoft-Graph-Connect, https://github.com/OfficeDev/O365-Python-Microsoft-Graph-Connect
 #
 # Copyright (c) Microsoft Corporation
 # All rights reserved.
