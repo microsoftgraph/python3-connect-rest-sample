@@ -29,7 +29,7 @@ To use the Office 365 Python Connect sample, you need the following:
 6. Start the development server by running ```python manage.py runserver```.
 7. Navigate to ```http://127.0.0.1:8000/``` in your web browser.
 
-To learn more about the sample, visit the [Understanding the Connect code sample Wiki page](https://github.com/OfficeDev/O365-Python-Microsoft-Graph-Connect/wiki/Understanding-the-Connect-code-sample). 
+To learn more about the sample, visit the [Python walkthrough on graph.microsoft.io.](http://graph.microsoft.io/docs/platform/python).  
 
 ## Questions and comments
 
@@ -41,7 +41,7 @@ Questions about Office 365 development in general should be posted to [Stack Ove
 
 * [Office Dev Center](http://dev.office.com/)
 * [Microsoft Graph API](http://graph.microsoft.io)
-* [Office UI Fabric](https://github.com/OfficeDev/Office-UI-Fabric)
+* [Office UI Fabric](http://dev.office.com/fabric)
 
 ## Copyright
 Copyright (c) 2015 Microsoft. All rights reserved.
