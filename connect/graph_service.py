@@ -59,7 +59,7 @@ def call_sendMail_endpoint(access_token, alias, emailAddress):
 
 #######################################################################
 #  
-# O365-Python-Unified-API-Connect, https://github.com/OfficeDev/O365-Python-Unified-API-Connect
+# O365-Python-Microsoft-Graph-Connect, https://github.com/OfficeDev/O365-Python-Microsoft-Graph-Connect
 #
 # Copyright (c) Microsoft Corporation
 # All rights reserved.
