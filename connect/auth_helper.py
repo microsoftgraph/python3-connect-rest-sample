@@ -39,7 +39,7 @@ def get_signout_url(redirect_uri):
   params = { 'post_logout_redirect_uri': home_page_url
            }
            
-  signout_url = (authority + '/common/oauth2/logout?{0}').format(urlencode(params))
+  signout_url = (authority + '/common/oauth2/v2.0/logout?{0}').format(urlencode(params))
   return signout_url
   
 # This function passes the authorization code to the token
