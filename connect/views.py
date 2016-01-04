@@ -34,6 +34,7 @@ def get_token(request):
   request.session['showSuccess'] = 'false'
   request.session['showError'] = 'false'
   request.session['pageRefresh'] = 'true'
+  request.session['errorMessage'] = None  
   return HttpResponseRedirect(reverse('connect:main'))
   
 # This is the main view that is displayed after a user connects
@@ -51,7 +52,8 @@ def main(request):
     'emailAddress': request.session['emailAddress'],
     'showSuccess': request.session['showSuccess'],
     'showError': request.session['showError'],
-    'logoutUrl': request.session['logoutUrl']
+    'logoutUrl': request.session['logoutUrl'],
+    'errorMessage': request.session['errorMessage']
   }
   return render(request, 'connect/main.html', context)
   
@@ -67,11 +69,17 @@ def send_mail(request):
   # that the operation completed successfully. 
   if response == 202:
     request.session['showSuccess'] = 'true'  
-    request.session['showError'] = 'false'  
+    request.session['showError'] = 'false'
+    request.session['errorMessage'] = None
+  elif response == 'ErrorNonExistentMailbox':
+    request.session['showSuccess'] = 'false' 
+    request.session['showError'] = 'true'
+    request.session['errorMessage'] = 'Sorry, your Microsoft account has not been migrated yet and does not support Microsoft Graph.'
   else:
     print(response)
     request.session['showSuccess'] = 'false' 
-    request.session['showError'] = 'true' 
+    request.session['showError'] = 'true'
+    request.session['errorMessage'] = 'Sorry, something went wrong and email was not sent.'
   
   request.session['pageRefresh'] = 'false'
   return HttpResponseRedirect(reverse('connect:main'))

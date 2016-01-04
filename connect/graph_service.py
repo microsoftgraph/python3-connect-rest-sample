@@ -55,7 +55,8 @@ def call_sendMail_endpoint(access_token, alias, emailAddress):
   if (response.status_code == requests.codes.accepted):
     return response.status_code
   else:
-    return "{0}: {1}".format(response.status_code, response.text)
+    jsonResponse = json.loads(response.text)
+    return jsonResponse['error']['code']
 
 #######################################################################
 #  
