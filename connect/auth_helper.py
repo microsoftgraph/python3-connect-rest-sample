@@ -13,10 +13,13 @@ home_page_url = 'http://127.0.0.1:8000/'
 authority = 'https://login.microsoftonline.com'
 
 # The authorize URL that initiates the OAuth2 client credential flow for admin consent.
-authorize_url = '{0}{1}'.format(authority, '/common/oauth2/authorize?{0}')
+authorize_url = '{0}{1}'.format(authority, '/common/oauth2/v2.0/authorize?{0}')
 
 # The token issuing endpoint.
-token_url = '{0}{1}'.format(authority, '/common/oauth2/token')
+token_url = '{0}{1}'.format(authority, '/common/oauth2/v2.0/token')
+
+# The scopes required by the app.
+scopes = [ 'openid', 'https://graph.microsoft.com/Mail.Send' ]
 
 # This function creates the signin URL that the app will
 # direct the user to in order to sign in to Office 365 and
@@ -25,7 +28,8 @@ def get_signin_url(redirect_uri):
   # Build the query parameters for the signin URL.
   params = { 'client_id': client_id,
              'redirect_uri': redirect_uri,
-             'response_type': 'code'
+             'response_type': 'code',
+             'scope': ' '.join(str(i) for i in scopes)
            }
 
   signin_url = authorize_url.format(urlencode(params))
@@ -46,8 +50,8 @@ def get_token_from_code(auth_code, redirect_uri):
                 'code': auth_code,
                 'redirect_uri': redirect_uri,
                 'client_id': client_id,
-                'client_secret': client_secret,
-                'resource': 'https://graph.microsoft.com'
+                'scope': ' '.join(str(i) for i in scopes),
+                'client_secret': client_secret
               }
               
   r = requests.post(token_url, data = post_data)

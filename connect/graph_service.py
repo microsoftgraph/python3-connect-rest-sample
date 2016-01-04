@@ -29,7 +29,7 @@ def call_sendMail_endpoint(access_token, alias, emailAddress):
 		'return-client-request-id' : 'true' 
 	}
   headers.update(instrumentation)
-	
+
 	# Create the email that is to be sent with API.
   email = {
 		'Message': {

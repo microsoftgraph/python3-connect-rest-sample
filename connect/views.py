@@ -29,8 +29,8 @@ def get_token(request):
 
   # Save the token and other information for the view in the session.
   request.session['access_token'] = access_token
-  request.session['alias'] = user_info['upn'].split('@')[0]
-  request.session['emailAddress'] = user_info['upn']  
+  request.session['alias'] = user_info['name']
+  request.session['emailAddress'] = user_info['preferred_username']  
   request.session['showSuccess'] = 'false'
   request.session['showError'] = 'false'
   request.session['pageRefresh'] = 'true'
