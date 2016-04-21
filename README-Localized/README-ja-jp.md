@@ -1,10 +1,10 @@
-# Microsoft Graph を使った Office 365 Python Connect サンプル
+﻿# Microsoft Graph を使った Office 365 Python Connect サンプル
 
 各アプリで Office 365 のサービスとデータの操作を開始するため、最初に Office 365 に接続する必要があります。このサンプルでは、Microsoft Graph API (以前は Office 365 統合 API と呼ばれていた) を介して 1 つの API に接続して呼び出す方法を示し、Office Fabric UI を使って Office 365 エクスペリエンスを作成します。
 
 > メモ: このサンプルをより迅速に実行するため、「[Office 365 API を使う](http://dev.office.com/getting-started/office365apis?platform=option-python#setup)」ページに記載された登録の簡略化をお試しください。
 
-![Office 365 Python Connect サンプルのスクリーン ショット](./README assets/screenshot.PNG)
+![Office 365 Python Connect サンプルのスクリーン ショット](../README assets/screenshot.PNG)
 
 ## 前提条件
 

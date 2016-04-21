@@ -1,10 +1,10 @@
-# Ejemplo Connect de Python para Office 365 con Microsoft Graph
+﻿# Ejemplo Connect de Python para Office 365 con Microsoft Graph
 
 Conectarse a Office 365 es el primer paso que debe realizar cada aplicación para empezar a trabajar con los datos y servicios de Office 365. Este ejemplo muestra cómo conectar y cómo llamar después a una API mediante la API de Microsoft Graph (anteriormente denominada API unificada de Office 365), y usa la interfaz de usuario Fabric de Office para crear una experiencia de Office 365.
 
 > Nota: Consulte [Introducción a las API de Office 365](http://dev.office.com/getting-started/office365apis?platform=option-python#setup), que simplifica el registro para que este ejemplo se ejecute más rápidamente.
 
-![Captura de pantalla del ejemplo Connect de Python para Office 365](./README assets/screenshot.PNG)
+![Captura de pantalla del ejemplo Connect de Python para Office 365](../README assets/screenshot.PNG)
 
 ## Requisitos previos
 
