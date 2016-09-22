@@ -1,4 +1,4 @@
-# Office 365 Python Connect sample using Microsoft Graph
+# Microsoft Graph Connect Sample for Python
 
 Connecting to Office 365 is the first step every app must take to start working with Office 365 services and data. This sample shows how to connect and then call one API through the Microsoft Graph API (previously called Office 365 unified API), and uses the Office Fabric UI to create an Office 365 experience.
 
