@@ -27,6 +27,7 @@ To use the Office 365 Python Connect sample, you need the following:
 ## Register the app
 
 Registering your web application is the first step. 
+
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 2. On the top bar, click on your account and under the **Directory** list, choose the Active Directory tenant where you wish to register your application.
 3. Click on **More Services** in the left hand nav, and choose **Azure Active Directory**.
@@ -34,7 +35,7 @@ Registering your web application is the first step.
 5. Enter a friendly name for the application, for example 'MSGraphConnectPython' and select 'Web app/API' as the **Application Type**. For the Sign-on URL, enter ‘http://127.0.0.1:8000/connect/get_token/’. Click on **Create** to create the application.
 6. While still in the Azure portal, choose your application, click on **Settings** and choose **Properties**.
 7. Find the Application ID value and copy it to the clipboard.
-8. Configure Permissions for your application.
+8. Configure Permissions for your application:
 9. In the **Settings** menu, choose the **Required permissions** section, click on **Add**, then **Select an API**, and select **Microsoft Graph**.
 10. Then, click on Select Permissions and select **Sign in and read user profile** and **Send mail as a user**. Click **Select** and then **Done**.
 11. In the **Settings** menu, choose the **Keys** section. Enter a description and select a duration for the key. Click **Save**.
