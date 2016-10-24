@@ -7,7 +7,7 @@ import requests
 from connect.config import client_id, client_secret
 
 # The URL of the home page of the app. Leave as default if running on localhost:8000.
-home_page_url = 'http://127.0.0.1:8000/'
+home_page_url = 'http://localhost:8000/'
 
 # The OAuth authority.
 authority = 'https://login.microsoftonline.com'

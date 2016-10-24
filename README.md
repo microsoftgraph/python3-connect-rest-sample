@@ -9,8 +9,8 @@ Connecting to Office 365 is the first step every app must take to start working 
 ## Prerequisites
 
 To use the Office 365 Python Connect sample, you need the following:
-* [Python 3.4.3](https://www.python.org/downloads/)
-* [Django 1.8](https://docs.djangoproject.com/en/1.8/intro/install/)
+* [Python 3.5.2](https://www.python.org/downloads/)
+* [Django 1.10](https://docs.djangoproject.com/en/1.10/intro/install/)
 * An Office 365 account. You can sign up for [an Office 365 Developer subscription](https://aka.ms/devprogramsignup) that includes the resources that you need to start building Office 365 apps.
 
      > Note: If you already have a subscription, the previous link sends you to a page with the message *Sorry, you can’t add that to your current account*. In that case use an account from your current Office 365 subscription.
@@ -22,7 +22,7 @@ To use the Office 365 Python Connect sample, you need the following:
      
 * A client ID, client secret, and redirect URI values of an application registered in Azure. This sample application must be granted the **Send mail as signed-in user** and **Send mail as signed-in user** permissions for the **Microsoft Graph** application. See the instructions below.
 
-     > Note: During the app registration process, make sure to specify **http://127.0.0.1:8000/connect/get_token/** as the **Sign-on URL**.
+     > Note: During the app registration process, make sure to specify **http://localhost:8000/get_token/** as the **Sign-on URL**.
 
 ## Register the app
 
@@ -32,7 +32,7 @@ Registering your web application is the first step.
 2. On the top bar, click on your account and under the **Directory** list, choose the Active Directory tenant where you wish to register your application.
 3. Click on **More Services** in the left hand nav, and choose **Azure Active Directory**.
 4. Click on **App registrations** and choose **Add**.
-5. Enter a friendly name for the application, for example 'MSGraphConnectPython' and select 'Web app/API' as the **Application Type**. For the Sign-on URL, enter ‘http://127.0.0.1:8000/connect/get_token/’. Click on **Create** to create the application.
+5. Enter a friendly name for the application, for example 'MSGraphConnectPython' and select 'Web app/API' as the **Application Type**. For the Sign-on URL, enter ‘http://localhost:8000/get_token/’. Click on **Create** to create the application.
 6. While still in the Azure portal, choose your application, click on **Settings** and choose **Properties**.
 7. Find the Application ID value and copy it to the clipboard.
 8. Configure Permissions for your application:
@@ -49,7 +49,7 @@ Registering your web application is the first step.
 4. Install the [Requests: HTTP for Humans module](http://docs.python-requests.org/en/latest/) from the command line by running ```pip install requests```.
 5. Set up the server by running ```python manage.py migrate```. [This command](https://docs.djangoproject.com/en/1.8/ref/django-admin/#django-admin-migrate) will synchronize the database state with the current set of migrations.
 6. Start the development server by running ```python manage.py runserver```.
-7. Navigate to ```http://127.0.0.1:8000/``` in your web browser.
+7. Navigate to ```http://localhost:8000/``` in your web browser.
 
 To learn more about the sample, see [Python walkthrough on graph.microsoft.io](http://graph.microsoft.io/docs/platform/python).
 

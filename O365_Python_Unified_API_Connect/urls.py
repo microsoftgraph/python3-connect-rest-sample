@@ -15,11 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from connect.views import home, get_token, main, send_mail, disconnect
 
 urlpatterns = [
     # Invoke the home view in the connect app by default
-    url(r'^$', 'connect.views.home', name='home'),
+    url(r'^$', home, name='home'),
     # Defer any URLS to the /connect directory to the connect app
-    url(r'^connect/', include('connect.urls', namespace='connect')),
+    url(r'^$', home, name='home'),  
+    url(r'^get_token/$', get_token, name='get_token'),
+    url(r'^main/$', main, name='main'),
+    url(r'^send_mail/$', send_mail, name='send_mail'),
+    url(r'^disconnect/$', disconnect, name='disconnect'),
     url(r'^admin/', include(admin.site.urls)),
 ]

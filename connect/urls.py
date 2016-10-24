@@ -1,7 +1,7 @@
 # Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license at the bottom of this file.
 
 from django.conf.urls import patterns, url 
-from connect import views 
+from connect import views as connect_views 
 
 urlpatterns = patterns('', 
   url(r'^$', views.home, name='home'), 

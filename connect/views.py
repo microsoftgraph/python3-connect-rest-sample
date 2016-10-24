@@ -9,7 +9,7 @@ from connect.graph_service import call_sendMail_endpoint
 # This is the home route. It renders a page with a button
 # to connect to Office 365.
 def home(request):
-  redirect_uri = request.build_absolute_uri(reverse('connect:get_token'))
+  redirect_uri = request.build_absolute_uri(reverse('get_token'))
   sign_in_url = get_signin_url(redirect_uri)
   request.session['logoutUrl'] = get_signout_url(redirect_uri)
   context = { 
@@ -22,7 +22,7 @@ def home(request):
 # is swapped for an access token in auth_helper.
 def get_token(request):
   auth_code = request.GET['code']
-  redirect_uri = request.build_absolute_uri(reverse('connect:get_token'))
+  redirect_uri = request.build_absolute_uri(reverse('get_token'))
   token = get_token_from_code(auth_code, redirect_uri)
   access_token = token['access_token']
   user_info = get_user_info_from_token(token['id_token'])
@@ -34,7 +34,7 @@ def get_token(request):
   request.session['showSuccess'] = 'false'
   request.session['showError'] = 'false'
   request.session['pageRefresh'] = 'true'
-  return HttpResponseRedirect(reverse('connect:main'))
+  return HttpResponseRedirect(reverse('main'))
   
 # This is the main view that is displayed after a user connects
 # to Office 365. It shows a textbox that the user can enter an 
@@ -74,7 +74,7 @@ def send_mail(request):
     request.session['showError'] = 'true' 
   
   request.session['pageRefresh'] = 'false'
-  return HttpResponseRedirect(reverse('connect:main'))
+  return HttpResponseRedirect(reverse('main'))
   
 # This is the route that is called when the user clicks the disconnect
 # button in the navigation bar. Clear user identifying information from
@@ -83,7 +83,7 @@ def disconnect(request):
   request.session['access_token'] = None
   request.session['alias'] = None
   request.session['emailAddress'] = None
-  return HttpResponseRedirect(reverse('connect:home'))
+  return HttpResponseRedirect(reverse('home'))
   
 #######################################################################
 #  
