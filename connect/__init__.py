@@ -62,6 +62,8 @@ def authorized():
 	# Check response for state
 	if str(session['state']) != str(request.args['state']):
 		raise Exception('State has been messed with, end authentication')
+	# Remove state session variable to prevent reuse.
+	session['state'] = ""
 		
 	# Okay to store this in a local variable, encrypt if it's going to client
 	# machine or database. Treat as a password. 
@@ -74,14 +76,19 @@ def authorized():
 	userName = me['displayName']
 	userEmailAddress = me['userPrincipalName']
 	session['alias'] = userName
-	return render_template('main.html', alias = userName, emailAddress=userEmailAddress)
+	session['userEmailAddress'] = userEmailAddress
+	return redirect('main')
 
 @app.route('/main')
 def main():
-	return render_template('main.html')
+	if session['alias']:
+		userName = session['alias']
+		userEmailAddress = session['userEmailAddress']
+		return render_template('main.html', alias = userName, emailAddress=userEmailAddress)
+	else:
+		return render_template('main.html')	
 
-# This is the route that is called from the main.html template
-# to send an email with the Microsoft Graph API.
+# Send an email with the Microsoft Graph API.
 @app.route('/send_mail')
 def send_mail():
   # Change the stored email address to whatever the user put in the form.

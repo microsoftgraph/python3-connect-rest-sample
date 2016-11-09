@@ -10,7 +10,6 @@ Connecting to Office 365 is the first step every app must take to start working 
 
 To use the Office 365 Python Connect sample, you need the following:
 * [Python 3.5.2](https://www.python.org/downloads/)
-* [Django 1.10](https://docs.djangoproject.com/en/1.10/intro/install/)
 * [Flask-OAuthlib](https://github.com/lepture/flask-oauthlib)
 * [Flask-Script 0.4](http://flask-script.readthedocs.io/en/latest/)
 * A [Microsoft account](https://www.outlook.com/) or an [Office 365 for business account](https://msdn.microsoft.com/en-us/office/office365/howto/setup-development-environment#bk_Office365Account)
