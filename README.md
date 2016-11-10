@@ -2,8 +2,6 @@
 
 Connecting to Office 365 is the first step every app must take to start working with Office 365 services and data. This sample shows how to connect and then call one API through the Microsoft Graph API (previously called Office 365 unified API), and uses the Office Fabric UI to create an Office 365 experience.
 
-> Note: Try out the [Get started with Office 365 APIs](http://dev.office.com/getting-started/office365apis?platform=option-python#setup) page which simplifies registration so you can get this sample running faster.
-
 ![Office 365 Python Connect sample screenshot](./README assets/screenshot.PNG)
 
 ## Prerequisites
@@ -13,6 +11,8 @@ To use the Office 365 Python Connect sample, you need the following:
 * [Flask-OAuthlib](https://github.com/lepture/flask-oauthlib)
 * [Flask-Script 0.4](http://flask-script.readthedocs.io/en/latest/)
 * A [Microsoft account](https://www.outlook.com/) or an [Office 365 for business account](https://msdn.microsoft.com/en-us/office/office365/howto/setup-development-environment#bk_Office365Account)
+
+> Note: Microsoft has tested the [Flask-OAuthlib](https://github.com/lepture/flask-oauthlib) library in basic scenarios and confirmed that it works with the v2.0 endpoint. Microsoft does not provide fixes for this library and has not done a review of it. Issues and feature requests should be directed to the library’s open-source project.
 
 ## Register the application
 
