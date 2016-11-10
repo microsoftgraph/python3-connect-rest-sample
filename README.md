@@ -73,4 +73,4 @@ Your feedback is important to us. Connect with us on [Stack Overflow](http://sta
 * [Office UI Fabric](http://dev.office.com/fabric)
 
 ## Copyright
-Copyright (c) 2015 Microsoft. All rights reserved.
+Copyright (c) 2016 Microsoft. All rights reserved.
