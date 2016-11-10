@@ -1,10 +1,8 @@
 #!/usr/bin/env python
-import os
-import sys
+from flask_script import Manager, Shell, Server
+from connect import app
 
-if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "O365_Python_Unified_API_Connect.settings")
-
-    from django.core.management import execute_from_command_line
-
-    execute_from_command_line(sys.argv)
+manager = Manager(app)
+manager.add_command("runserver", Server())
+manager.add_command("shell", Shell())
+manager.run()

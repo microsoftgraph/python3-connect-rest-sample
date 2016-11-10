@@ -2,54 +2,54 @@
 
 Connecting to Office 365 is the first step every app must take to start working with Office 365 services and data. This sample shows how to connect and then call one API through the Microsoft Graph API (previously called Office 365 unified API), and uses the Office Fabric UI to create an Office 365 experience.
 
-> Note: Try out the [Get started with Office 365 APIs](http://dev.office.com/getting-started/office365apis?platform=option-python#setup) page which simplifies registration so you can get this sample running faster.
-
 ![Office 365 Python Connect sample screenshot](./README assets/screenshot.PNG)
 
 ## Prerequisites
 
 To use the Office 365 Python Connect sample, you need the following:
-* [Python 3.4.3](https://www.python.org/downloads/)
-* [Django 1.8](https://docs.djangoproject.com/en/1.8/intro/install/)
-* An Office 365 account. You can sign up for [an Office 365 Developer subscription](https://aka.ms/devprogramsignup) that includes the resources that you need to start building Office 365 apps.
+* [Python 3.5.2](https://www.python.org/downloads/)
+* [Flask-OAuthlib](https://github.com/lepture/flask-oauthlib)
+* [Flask-Script 0.4](http://flask-script.readthedocs.io/en/latest/)
+* A [Microsoft account](https://www.outlook.com/) or an [Office 365 for business account](https://msdn.microsoft.com/en-us/office/office365/howto/setup-development-environment#bk_Office365Account)
 
-     > Note: If you already have a subscription, the previous link sends you to a page with the message *Sorry, you can’t add that to your current account*. In that case use an account from your current Office 365 subscription.
-* A Microsoft Azure tenant to register your application. Azure Active Directory (AD) provides identity services that applications use for authentication and authorization. A trial subscription can be acquired here: [Microsoft Azure](https://account.windowsazure.com/SignUp).
+> Note: Microsoft has tested the [Flask-OAuthlib](https://github.com/lepture/flask-oauthlib) library in basic scenarios and confirmed that it works with the v2.0 endpoint. Microsoft does not provide fixes for this library and has not done a review of it. Issues and feature requests should be directed to the library’s open-source project.
 
-<!--
-     > Important: You also need to make sure your Azure subscription is bound to your Office 365 tenant. To do this, see the Active Directory team's blog post, [Creating and Managing Multiple Windows Azure Active Directories](http://blogs.technet.com/b/ad/archive/2013/11/08/creating-and-managing-multiple-windows-azure-active-directories.aspx). The section **Adding a new directory** will explain how to do this. You can also see [Set up your Office 365 development environment](https://msdn.microsoft.com/office/office365/howto/setup-development-environment#bk_CreateAzureSubscription) and the section **Associate your Office 365 account with Azure AD to create and manage apps** for more information.
--->
-     
-* A client ID, client secret, and redirect URI values of an application registered in Azure. This sample application must be granted the **Send mail as signed-in user** and **Send mail as signed-in user** permissions for the **Microsoft Graph** application. See the instructions below.
+## Register the application
 
-     > Note: During the app registration process, make sure to specify **http://127.0.0.1:8000/connect/get_token/** as the **Sign-on URL**.
+Register an app on the Microsoft App Registration Portal. This generates the app ID and password that you'll use to configure the app for authentication.
 
-## Register the app
+1. Sign into the [Microsoft App Registration Portal](https://apps.dev.microsoft.com/) using either your personal or work or school account.
 
-Registering your web application is the first step. 
+2. Choose **Add an app**.
 
-1. Sign in to the [Azure portal](https://portal.azure.com/).
-2. On the top bar, click on your account and under the **Directory** list, choose the Active Directory tenant where you wish to register your application.
-3. Click on **More Services** in the left hand nav, and choose **Azure Active Directory**.
-4. Click on **App registrations** and choose **Add**.
-5. Enter a friendly name for the application, for example 'MSGraphConnectPython' and select 'Web app/API' as the **Application Type**. For the Sign-on URL, enter ‘http://127.0.0.1:8000/connect/get_token/’. Click on **Create** to create the application.
-6. While still in the Azure portal, choose your application, click on **Settings** and choose **Properties**.
-7. Find the Application ID value and copy it to the clipboard.
-8. Configure Permissions for your application:
-9. In the **Settings** menu, choose the **Required permissions** section, click on **Add**, then **Select an API**, and select **Microsoft Graph**.
-10. Then, click on Select Permissions and select **Sign in and read user profile** and **Send mail as a user**. Click **Select** and then **Done**.
-11. In the **Settings** menu, choose the **Keys** section. Enter a description and select a duration for the key. Click **Save**.
-12. **Important**: Copy the key value. You won't be able to access this value again once you leave this pane. You will use this value as your app secret.
+3. Enter a name for the app, and choose **Create application**.
+
+	The registration page displays, listing the properties of your app.
+
+4. Copy the application ID. This is the unique identifier for your app.
+
+5. Under **Application Secrets**, choose **Generate New Password**. Copy the app secret from the **New password generated** dialog.
+
+	You'll use the application ID and app secret to configure the app.
+
+6. Under **Platforms**, choose **Add platform** > **Web**.
+
+7. Make sure the **Allow Implicit Flow** check box is selected, and enter *http://localhost:5000/login/authorized* as the Redirect URI.
+
+	The **Allow Implicit Flow** option enables the OpenID Connect hybrid flow. During authentication, this enables the app to receive both sign-in info (the **id_token**) and artifacts (in this case, an authorization code) that the app uses to obtain an access token.
+
+	The redirect URI *http://localhost:5000/login/authorized* is the value that the OmniAuth middleware is configured to use once it has processed the authentication request.
+
+8. Choose **Save**.
 
 ## Configure and run the app
 
 1. Using your favorite IDE, open **config.py** in the *connect* directory.
-2. Replace *ENTER_YOUR_CLIENT_ID* with the client ID of your registered Azure application.
-3. Replace *ENTER_YOUR_SECRET* with a key generated for your app in the Azure portal.
+2. Replace *ENTER_YOUR_CLIENT_ID* with the client ID of your registered application.
+3. Replace *ENTER_YOUR_SECRET* with the key you generated for your app.
 4. Install the [Requests: HTTP for Humans module](http://docs.python-requests.org/en/latest/) from the command line by running ```pip install requests```.
-5. Set up the server by running ```python manage.py migrate```. [This command](https://docs.djangoproject.com/en/1.8/ref/django-admin/#django-admin-migrate) will synchronize the database state with the current set of migrations.
-6. Start the development server by running ```python manage.py runserver```.
-7. Navigate to ```http://127.0.0.1:8000/``` in your web browser.
+5. Start the development server by running ```python manage.py runserver```.
+6. Navigate to ```http://localhost:5000/``` in your web browser.
 
 To learn more about the sample, see [Python walkthrough on graph.microsoft.io](http://graph.microsoft.io/docs/platform/python).
 

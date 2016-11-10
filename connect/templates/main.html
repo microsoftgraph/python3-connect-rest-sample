@@ -75,7 +75,7 @@
   <div class="ms-NavBar">
     <ul class="ms-NavBar-items">
       <li class="navbar-header">Office 365 Connect sample</li>
-      <li class="ms-NavBar-item ms-NavBar-item--right" onclick="window.location.href='{{ logoutUrl }}'"><i class="ms-Icon ms-Icon--x"></i> Disconnect</li>
+      <li class="ms-NavBar-item ms-NavBar-item--right" onclick="window.location.href='/logout'"><i class="ms-Icon ms-Icon--x"></i> Disconnect</li>
     </ul>
   </div>
 
@@ -84,7 +84,7 @@
     <div>
       <h2 class="ms-font-xxl ms-fontWeight-semibold">Hi, {{ alias }}!</h2>
       <p class="ms-font-xl">You're now connected to Office 365. Click the button below to send a message from your account using the Office 365 unified API. </p>
-      <form action="/connect/send_mail">
+      <form action="/send_mail">
         <div class="ms-TextField">
           <input name="emailAddress" class="ms-TextField-field" value="{{ emailAddress }}">
         </div>
