@@ -17,96 +17,96 @@ oauth = OAuth(app)
 # Put your consumer key and consumer secret into a config file
 # and don't check it into github!!
 microsoft = oauth.remote_app(
-	'microsoft',
-	consumer_key=client_id,
-	consumer_secret=client_secret,
-	request_token_params={'scope': 'User.Read Mail.Send'},
-	base_url='https://graph.microsoft.com/v1.0/',
-	request_token_url=None,
-	access_token_method='POST',
-	access_token_url='https://login.microsoftonline.com/common/oauth2/v2.0/token',
-	authorize_url='https://login.microsoftonline.com/common/oauth2/v2.0/authorize'
+    'microsoft',
+    consumer_key=client_id,
+    consumer_secret=client_secret,
+    request_token_params={'scope': 'User.Read Mail.Send'},
+    base_url='https://graph.microsoft.com/v1.0/',
+    request_token_url=None,
+    access_token_method='POST',
+    access_token_url='https://login.microsoftonline.com/common/oauth2/v2.0/token',
+    authorize_url='https://login.microsoftonline.com/common/oauth2/v2.0/authorize'
 )
 
 
 @app.route('/')
 def index():
-	 return render_template('connect.html')
+    return render_template('connect.html')
 
 
 @app.route('/login')
 def login():
 
-	# Generate the guid to only accept initiated logins
-	guid = uuid.uuid4()
-	session['state'] = guid
+    # Generate the guid to only accept initiated logins
+    guid = uuid.uuid4()
+    session['state'] = guid
 
-	return microsoft.authorize(callback=url_for('authorized', _external=True), state=guid)
+    return microsoft.authorize(callback=url_for('authorized', _external=True), state=guid)
 
 @app.route('/logout')
 def logout():
-	session.pop('microsoft_token', None)
-	session.pop('state', None)
-	return redirect(url_for('index'))
+    session.pop('microsoft_token', None)
+    session.pop('state', None)
+    return redirect(url_for('index'))
 
 @app.route('/login/authorized')
 def authorized():
-	response = microsoft.authorized_response()
+    response = microsoft.authorized_response()
 
-	if response is None:
-		return "Access Denied: Reason=%s\nError=%s" % (
-			request.args['error'], 
-			request.args['error_description']
-		)
+    if response is None:
+        return "Access Denied: Reason=%s\nError=%s" % (
+            request.args['error'], 
+            request.args['error_description']
+        )
 
-	# Check response for state
-	if str(session['state']) != str(request.args['state']):
-		raise Exception('State has been messed with, end authentication')
-	# Remove state session variable to prevent reuse.
-	session['state'] = ""
+    # Check response for state
+    if str(session['state']) != str(request.args['state']):
+        raise Exception('State has been messed with, end authentication')
+    # Remove state session variable to prevent reuse.
+    session['state'] = ""
 		
-	# Okay to store this in a local variable, encrypt if it's going to client
-	# machine or database. Treat as a password. 
-	session['microsoft_token'] = (response['access_token'], '')
-	# Store the token in another session variable for easy access
-	session['access_token'] = response['access_token']
-	meResponse = microsoft.get('me')
-	meData = json.dumps(meResponse.data)
-	me = json.loads(meData)
-	userName = me['displayName']
-	userEmailAddress = me['userPrincipalName']
-	session['alias'] = userName
-	session['userEmailAddress'] = userEmailAddress
-	return redirect('main')
+    # Okay to store this in a local variable, encrypt if it's going to client
+    # machine or database. Treat as a password. 
+    session['microsoft_token'] = (response['access_token'], '')
+    # Store the token in another session variable for easy access
+    session['access_token'] = response['access_token']
+    meResponse = microsoft.get('me')
+    meData = json.dumps(meResponse.data)
+    me = json.loads(meData)
+    userName = me['displayName']
+    userEmailAddress = me['userPrincipalName']
+    session['alias'] = userName
+    session['userEmailAddress'] = userEmailAddress
+    return redirect('main')
 
 @app.route('/main')
 def main():
-	if session['alias']:
-		userName = session['alias']
-		userEmailAddress = session['userEmailAddress']
-		return render_template('main.html', alias = userName, emailAddress=userEmailAddress)
-	else:
-		return render_template('main.html')	
+    if session['alias']:
+        userName = session['alias']
+        userEmailAddress = session['userEmailAddress']
+        return render_template('main.html', alias = userName, emailAddress=userEmailAddress)
+    else:
+        return render_template('main.html')	
 
 # Send an email with the Microsoft Graph API.
 @app.route('/send_mail')
 def send_mail():
-  # Change the stored email address to whatever the user put in the form.
-  emailAddress = request.args.get('emailAddress')
-  response = call_sendMail_endpoint(session['access_token'], session['alias'], emailAddress)
+    # Change the stored email address to whatever the user put in the form.
+    emailAddress = request.args.get('emailAddress')
+    response = call_sendMail_endpoint(session['access_token'], session['alias'], emailAddress)
   
-  # The success code for /me/sendMail is 202. Check to make sure
-  # that the operation completed successfully. 
-  if response == 202:
-    showSuccess = 'true'  
-    showError = 'false'  
-  else:
-    print(response)
-    showSuccess = 'false' 
-    showError = 'true' 
+    # The success code for /me/sendMail is 202. Check to make sure
+    # that the operation completed successfully. 
+    if response == 202:
+        showSuccess = 'true'  
+        showError = 'false'  
+    else:
+        print(response)
+        showSuccess = 'false' 
+        showError = 'true' 
   
-  session['pageRefresh'] = 'false'
-  return render_template('main.html', alias=session['alias'], emailAddress=emailAddress, showSuccess=showSuccess, showError=showError)
+    session['pageRefresh'] = 'false'
+    return render_template('main.html', alias=session['alias'], emailAddress=emailAddress, showSuccess=showSuccess, showError=showError)
 
 
 # If library is having trouble with refresh, uncomment below and implement refresh handler
@@ -118,7 +118,7 @@ def send_mail():
 
 @microsoft.tokengetter
 def get_microsoft_oauth_token():
-	return session.get('microsoft_token')
+    return session.get('microsoft_token')
 
 if __name__ == '__main__':
-	app.run()
+    app.run()
