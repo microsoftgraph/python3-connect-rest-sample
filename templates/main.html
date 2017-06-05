@@ -74,7 +74,7 @@
   <!-- App navigation bar markup. -->
   <div class="ms-NavBar">
     <ul class="ms-NavBar-items">
-      <li class="navbar-header">Office 365 Connect sample</li>
+      <li class="navbar-header">Microsoft Graph Connect sample</li>
       <li class="ms-NavBar-item ms-NavBar-item--right" onclick="window.location.href='/logout'"><i class="ms-Icon ms-Icon--x"></i> Disconnect</li>
     </ul>
   </div>
@@ -82,8 +82,8 @@
   <!-- App main content markup. -->
   <div class="ms-Grid-col ms-u-mdPush1 ms-u-md9 ms-u-lgPush1 ms-u-lg6">
     <div>
-      <h2 class="ms-font-xxl ms-fontWeight-semibold">Hi, {{ alias }}!</h2>
-      <p class="ms-font-xl">You're now connected to Office 365. Click the button below to send a message from your account using the Office 365 unified API. </p>
+      <h2 class="ms-font-xxl ms-fontWeight-semibold">Hi, {{ name }}!</h2>
+      <p class="ms-font-xl">You're now connected to Office 365. Click the button below to send a message from your account using the Microsoft Graph API. </p>
       <form action="/send_mail">
         <div class="ms-TextField">
           <input name="emailAddress" class="ms-TextField-field" value="{{ emailAddress }}">

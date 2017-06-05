@@ -1,0 +1,6 @@
+*ENTER_YOUR_CLIENT_ID*
+*ENTER_YOUR_SECRET*
+
+The first two lines of this file should be edited to contain the
+client application ID and client secret, each on a single line with
+no quotes or brackets.
