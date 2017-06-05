@@ -54,7 +54,7 @@ Register an app on the Microsoft App Registration Portal. This generates the app
 4. Start the development server by running ```python manage.py runserver```.
 5. Navigate to ```http://localhost:5000/``` in your web browser.
 
-To learn more about the sample, see [Python walkthrough on graph.microsoft.io](http://graph.microsoft.io/docs/platform/python).
+To learn more about the sample, see [Python walkthrough on graph.microsoft.io](https://developer.microsoft.com/graph/docs/concepts/python).
 
 <a name="contributing"></a>
 ## Contributing ##
