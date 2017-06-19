@@ -26,6 +26,9 @@ app.debug = True
 app.secret_key = 'development'
 oauth = OAuth(app)
 
+# since this sample runs locally without HTTPS, disable InsecureRequestWarning
+requests.packages.urllib3.disable_warnings()
+
 msgraphapi = oauth.remote_app( \
     'microsoft',
     consumer_key=client_id,
