@@ -1,37 +1,7 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>O365 Connect sample</title>
-
-  <!-- Third party dependencies. -->
-  <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.css">
-  <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.css">
-  
-  <style>
-    .navbar-header {
-      box-sizing: border-box;
-      display: block;
-      height: 40px;
-      line-height: 40px;
-      font-family: 'Segoe UI Semilight WestEuropean', 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
-      font-size: 17px;
-      padding-left: 20px;
-      position: relative;
-      font-weight: bold;
-    }
+{% extends "base.html" %}
     
-    @media (min-width: 480px) {
-      .navbar-header {
-        float: left;
-        margin-right: 20px;
-        font-size: 20px;
-        padding: 0;
-      }
-    }
-    
+  {% block style %}
+  {{ super() }}
     .ms-TextField {
       width: 300px;
       display: inline-block;
@@ -65,11 +35,10 @@
       min-width: 80px;
       padding: 4px 20px 6px;
     }
-  </style>
-  
-</head>
+  {% endblock style %}
 
-<body class="ms-Grid">
+  {% block body %}
+  {{ super() }}
   <div class="ms-Grid-row">
   <!-- App navigation bar markup. -->
   <div class="ms-NavBar">
@@ -104,6 +73,4 @@
     </div>
   </div>
 </div>
-</body>
-
-</html>
+  {% endblock body %}
