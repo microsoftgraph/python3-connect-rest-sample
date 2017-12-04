@@ -1,5 +1,7 @@
 # Microsoft Graph API Connect Sample for Python
 
+> NOTE: a new simpler version of this sample, as well as links to other Python samples for Microsoft Graph, can be found here: [https://aka.ms/graph-python-samples](https://aka.ms/graph-python-samples)
+
 Connecting to Office 365 is the first step every app must take to start working
 with Office 365 services and data. This sample shows how to connect and then
 call one API through the Microsoft Graph API (previously called Office 365
