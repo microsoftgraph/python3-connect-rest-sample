@@ -1,0 +1,19 @@
+### YamlMime:Sample
+sample:
+- name: Microsoft Graph API Connect Sample for Python
+  path: ''
+  description: This sample shows how to connect your Python web app to Office 365 using Microsoft Graph to send an email.
+  readme: ''
+  generateZip: FALSE
+  isLive: TRUE
+  technologies:
+  - Microsoft Graph
+  azureDeploy: ''
+  author: jamescro
+  platforms: []
+  languages:
+  - Python
+  extensions:
+    products:
+    - Office 365
+    scenarios: []
